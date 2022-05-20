@@ -1,0 +1,21 @@
+body {
+    background-color:lightblue;
+  }
+#form{
+  margin-left: 800px;
+}
+.day{
+  background-color: transparent;
+  border: transparent;
+}
+#table{
+  width: 800px;
+  height: 600px;
+  margin-top: 100px;
+  margin-left: 500px;
+  font-size: 20px;
+  background-color: white;
+}
+.move{
+  margin-left: 500px;
+}
