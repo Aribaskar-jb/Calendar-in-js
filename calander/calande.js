@@ -134,7 +134,13 @@ function Click(){
 }
 function Submit(){
     let data1=document.getElementById('data').value
-    let eventdata=localStorage.getItem('eventdata').split(',');
+    let eventdata = []
+    try{
+        eventdata=localStorage.getItem('eventdata').split(',');
+    }
+    catch(err){
+        eventdata=[]
+    }
     eventdata.push(data1)
     localStorage.setItem('eventdata', eventdata)
     console.log(localStorage)
