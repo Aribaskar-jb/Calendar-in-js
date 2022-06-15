@@ -1,3 +1,9 @@
+let curdate1 =new Date().getFullYear();
+var month = new Date().getMonth() 
+let curdate=new Date().getDate()
+document.getElementById("year").value =curdate1;
+document.getElementById("month").value =month+1;
+console.log(typeof(curdate1))
 function nodays(mm, yyyy){
     var daysofmonth;
     if((mm == 4) || (mm ==6) || (mm ==9) || (mm == 11)){
@@ -36,7 +42,6 @@ function renderTable(month, year){
 ];
     const month2 = new Date(year,month-1);
     let MONTH=monthNames[month2.getMonth()];
-    console.log(MONTH)
     console.log(b)
     console.log(day)   
     let table=document.createElement('table')
@@ -76,21 +81,25 @@ function renderTable(month, year){
             else{
                 let td = document.createElement("td");
                 let button1=document.createElement('button') 
+                let task=document.createElement('h4')
                 button1.setAttribute('class','day')
                 button1.setAttribute('type','submit')
+                button1.setAttribute('onclick','task(this.id)')
                 button1.setAttribute('data-bs-toggle','modal')
                 button1.setAttribute('data-bs-target','#myModal')
                 if(a<=d1){
                     button1.setAttribute('id',`${a}`)
+                    task.setAttribute('id',`${a+"/"+MONTH+"/"+year}`)
                     button1.append(a)
                     td.append(button1)
+                    td.append(task)
                     a=a+1;
                     tr.append(td) 
                 }
             }   
         } 
     }
-    bodyDiv = document.getElementById("tablearea");
+    bodyDiv = document.getElementById("tablearea"); 
     bodyDiv.innerHTML="";
     bodyDiv.append(printmonth) 
     bodyDiv.append(printyear)
@@ -100,6 +109,32 @@ function onSubmitForm(){
     let month = parseInt(document.getElementById("month").value);
     let year = parseInt(document.getElementById("year").value);
     renderTable(month, year)
+    document.getElementById(`${curdate}`).style.background='#4dbbff';
+    document.getElementById(`${curdate}`).style.borderRadius = '50%';
+}
+function month_0(){
+    let month = parseInt(document.getElementById("month").value);
+    let year = parseInt(document.getElementById("year").value);
+    document.getElementById("month").value = month-1;
+    renderTable(month-1, year)
+}
+function month_1(){
+    let month = parseInt(document.getElementById("month").value);
+    let year = parseInt(document.getElementById("year").value);
+    document.getElementById("month").value = month+1;
+    renderTable(month+1, year)
+}
+function year_0(){
+    let month = parseInt(document.getElementById("month").value);
+    let year = parseInt(document.getElementById("year").value);
+    document.getElementById("year").value = year-1;
+    renderTable(month, year-1)
+}
+function year_1(){
+    let month = parseInt(document.getElementById("month").value);
+    let year = parseInt(document.getElementById("year").value);
+    document.getElementById("year").value = year+1;
+    renderTable(month, year+1)
 }
 function Click(){
     let a=1;
@@ -120,7 +155,6 @@ function Click(){
                 let td = document.createElement("td");
                 let button1=document.createElement('button') 
                 button1.setAttribute('class','day')
-                button1.setAttribute('onclick','Click()')
                 if(a<=d1){
                     button1.setAttribute('id',`${a}`)
                     button1.append(a)
@@ -128,20 +162,23 @@ function Click(){
                     a=a+1;
                     tr.append(td) 
                 }
-            }   
+             }   
         } 
     }
 }
-function Submit(){
-    let data1=document.getElementById('data').value
-    let eventdata = []
-    try{
-        eventdata=localStorage.getItem('eventdata').split(',');
-    }
-    catch(err){
-        eventdata=[]
-    }
-    eventdata.push(data1)
-    localStorage.setItem('eventdata', eventdata)
-    console.log(localStorage)
+let date_1
+function task(clicked){
+    let month = parseInt(document.getElementById("month").value);
+    let year = parseInt(document.getElementById("year").value);
+    const monthNames = ["January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"]
+    const month2 = new Date(year,month-1);
+    let MONTH=monthNames[month2.getMonth()];
+    date_1=clicked+"/"+MONTH+"/"+year;
+} 
+function Submit2(){
+    let user_number=document.getElementById(date_1)
+    let Task_1=document.getElementById('data').value;
+    user_number.append(Task_1) 
+    document.getElementById('data').value = ''
 }
