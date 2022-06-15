@@ -109,6 +109,12 @@ function onSubmitForm(){
     let month = parseInt(document.getElementById("month").value);
     let year = parseInt(document.getElementById("year").value);
     renderTable(month, year)
+    for(let i=0;i< localStorage.length;i++){
+        let Key=localStorage.key(i)
+        let val=localStorage.getItem(Key)
+        let user_number=document.getElementById(Key)
+        user_number.append(val)
+    }
     document.getElementById(`${curdate}`).style.background='#4dbbff';
     document.getElementById(`${curdate}`).style.borderRadius = '50%';
 }
@@ -117,24 +123,32 @@ function month_0(){
     let year = parseInt(document.getElementById("year").value);
     document.getElementById("month").value = month-1;
     renderTable(month-1, year)
+    document.getElementById(`${curdate}`).style.background='#4dbbff';
+    document.getElementById(`${curdate}`).style.borderRadius = '50%';
 }
 function month_1(){
     let month = parseInt(document.getElementById("month").value);
     let year = parseInt(document.getElementById("year").value);
     document.getElementById("month").value = month+1;
     renderTable(month+1, year)
+    document.getElementById(`${curdate}`).style.background='#4dbbff';
+    document.getElementById(`${curdate}`).style.borderRadius = '50%';
 }
 function year_0(){
     let month = parseInt(document.getElementById("month").value);
     let year = parseInt(document.getElementById("year").value);
     document.getElementById("year").value = year-1;
     renderTable(month, year-1)
+    document.getElementById(`${curdate}`).style.background='#4dbbff';
+    document.getElementById(`${curdate}`).style.borderRadius = '50%';
 }
 function year_1(){
     let month = parseInt(document.getElementById("month").value);
     let year = parseInt(document.getElementById("year").value);
     document.getElementById("year").value = year+1;
     renderTable(month, year+1)
+    document.getElementById(`${curdate}`).style.background='#4dbbff';
+    document.getElementById(`${curdate}`).style.borderRadius = '50%';
 }
 function Click(){
     let a=1;
@@ -179,6 +193,12 @@ function task(clicked){
 function Submit2(){
     let user_number=document.getElementById(date_1)
     let Task_1=document.getElementById('data').value;
-    user_number.append(Task_1) 
+    // user_number.append(Task_1) 
+    localStorage.setItem(date_1,Task_1)
+    let loc=localStorage.getItem(date_1)
+    user_number.append(loc) 
+    document.getElementById('data').value = ''
+}
+function cancel(){
     document.getElementById('data').value = ''
 }
