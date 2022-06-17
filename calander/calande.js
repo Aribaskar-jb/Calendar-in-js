@@ -150,36 +150,6 @@ function year_1(){
     document.getElementById(`${curdate}`).style.background='#4dbbff';
     document.getElementById(`${curdate}`).style.borderRadius = '50%';
 }
-function Click(){
-    let a=1;
-    for(let i=0;i<=5;i++){
-        let tbody=document.createElement('tbody')
-        let tr=document.createElement('tr')
-        tr.setAttribute('id','row'+i)
-        tbody.append(tr)
-        table.append(tbody)
-        for(let j=0;j<=6;j++){
-            if (i ==0 && j < b) {
-                let td = document.createElement("td");
-                let text = document.createTextNode("");
-                td.append(text);
-                tr.append(td);
-            }
-            else{
-                let td = document.createElement("td");
-                let button1=document.createElement('button') 
-                button1.setAttribute('class','day')
-                if(a<=d1){
-                    button1.setAttribute('id',`${a}`)
-                    button1.append(a)
-                    td.append(button1)
-                    a=a+1;
-                    tr.append(td) 
-                }
-             }   
-        } 
-    }
-}
 let date_1
 function task(clicked){
     let month = parseInt(document.getElementById("month").value);
@@ -193,7 +163,6 @@ function task(clicked){
 function Submit2(){
     let user_number=document.getElementById(date_1)
     let Task_1=document.getElementById('data').value;
-    // user_number.append(Task_1) 
     localStorage.setItem(date_1,Task_1)
     let loc=localStorage.getItem(date_1)
     user_number.append(loc) 
