@@ -1,21 +1,70 @@
-body {
-    background-color:lightblue;
-  }
 #form{
-  margin-left: 800px;
+margin-left: 800px;
 }
 .day{
+background-color: transparent;
+border: transparent;
+border-radius: 50%;
+}
+.day1{
+  height: 35px;
+  width: 60px;
+  border: solid;
+  background-color: transparent;
+  border-color: grey ;
+  border-width: thin;
+}
+#table{
+width: 100%;
+height: 910px;
+font-size: 20px;
+margin-top: -100px;
+}
+table, th, td {
+  border: 1px solid grey;
+}
+#text{
+  float: right;
+}
+.move{
+margin-left: 500px;
+margin-top: 50px;
+}
+.btn{
+  background-color: transparent;
+  font-size: 23px; 
+}
+.im{
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+}
+.im1{
+  height: 37px;
+  width: 37px;
+  border-radius: 50%;
+}
+#month{
+  display:none;
+  visibility:hidden;
+  }
+#year{
+    display:none;
+    visibility:hidden;
+}
+.im2{
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+}
+.nav2{
+margin-top: -50px;
+margin-bottom: 55px;
+}
+button{
   background-color: transparent;
   border: transparent;
 }
-#table{
-  width: 800px;
-  height: 600px;
-  margin-top: 100px;
-  margin-left: 500px;
-  font-size: 20px;
-  background-color: white;
-}
-.move{
-  margin-left: 500px;
+.TD1{
+ width: 500px;
 }
