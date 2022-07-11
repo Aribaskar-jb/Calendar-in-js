@@ -68,3 +68,7 @@ button{
 .TD1{
  width: 500px;
 }
+#delete{
+  display:none;
+  visibility: hidden;
+}
