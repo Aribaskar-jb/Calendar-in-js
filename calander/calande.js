@@ -4,14 +4,19 @@ let curdate = new Date().getDate()
 let date_1
 document.getElementById("year").value = curdate1;
 document.getElementById("month").value = month + 1;
+let m2=2;
+let num=11;
+let m9=9;
+let m4=4;
+let m6=6;
 function nodays(mm, yyyy) {
     var daysofmonth;
-    if ((mm == 4) || (mm == 6) || (mm == 9) || (mm == 11)) {
+    if ((mm === m4) || (mm === m6) || (mm === m9) || (mm === num)) {
         daysofmonth = 30;
     }
     else {
         daysofmonth = 31
-        if (mm == 2) {
+        if (mm === m2) {
             if (yyyy / 4 - parseInt(yyyy / 4) != 0) {
                 daysofmonth = 28
             }
@@ -29,6 +34,7 @@ function nodays(mm, yyyy) {
                 }
             }
         }
+        
     }
     return daysofmonth;
 }
@@ -106,17 +112,6 @@ function renderTable(month, year) {
     bodyDiv.innerHTML = "";
     bodyDiv.append(table)
 }
-// function Delete(clicked){
-//     let ans=confirm("you want to delete this task")
-//     if(ans==false){
-//         localStorage.removeItem(clicked);
-//         document.getElementById(clicked).value = ''
-//         document.getElementById(clicked).style.background = 'transparent';
-//         document.getElementById( clicked).style.borderRadius = 'transparent';
-//     }
-//     else{
-//     }
-// }
 function onSubmitForm(){
     let month = parseInt(document.getElementById("month").value);
     let year = parseInt(document.getElementById("year").value);
@@ -146,10 +141,16 @@ let year = parseInt(document.getElementById("year").value);
             ye=ye-1
             renderTable(month - 1, year-1)
             num=num-12;
+            m2=m2-12
+            m9=m9-12
+            m4=m4-12
+            m6=m6-12
+            console.log(num)
            }
            else{
         document.getElementById("month").value = month  -1;
         renderTable(month-1, year)
+        console.log(num)
         document.getElementById(`${curdate}`).style.background = '#4dbbff';
         document.getElementById(`${curdate}`).style.borderRadius = '50%';
         for(let i=0;i< localStorage.length;i++){
@@ -167,7 +168,7 @@ let year = parseInt(document.getElementById("year").value);
         }
     }
     }
-let num=11;
+
 function month_1() {
     let month = parseInt(document.getElementById("month").value);
     let year = parseInt(document.getElementById("year").value);
@@ -177,10 +178,16 @@ function month_1() {
             ye=ye+1
             renderTable(month +1 , year+1)
             num=num+12;
+            m2=m2+12
+            m9=m9+12
+            m4=m4+12
+            m6=m6+12
+            console.log(num)
            }
            else{
         document.getElementById("month").value = month + 1;
         renderTable(month +1, year)
+        console.log(num)
         document.getElementById(`${curdate}`).style.background = '#4dbbff';
         document.getElementById(`${curdate}`).style.borderRadius = '50%';
         for(let i=0;i< localStorage.length;i++){
@@ -246,5 +253,4 @@ function Delete(){
     }
     else{
     }
-
 }
