@@ -89,7 +89,9 @@ function renderTable(month, year) {
                 if (a <= d1) {
                     button1.setAttribute('id', `${a}`)
                     task.setAttribute('id', `${a + "/" + MONTH + "/" + year}`)
-                    task.setAttribute('onclick','Delete(this.id)')
+                    task.setAttribute('onclick','Edit(this.id)')
+                    task.setAttribute('data-bs-toggle', 'modal')
+                    task.setAttribute('data-bs-target', '#myModal')
                     button1.append(a)
                     td.append(button1)
                     td.append(br)
@@ -104,17 +106,17 @@ function renderTable(month, year) {
     bodyDiv.innerHTML = "";
     bodyDiv.append(table)
 }
-function Delete(clicked){
-    let ans=confirm("you want to delete this task")
-    if(ans==false){
-        localStorage.removeItem(clicked);
-        document.getElementById(clicked).value = ''
-        document.getElementById(clicked).style.background = 'transparent';
-        document.getElementById( clicked).style.borderRadius = 'transparent';
-    }
-    else{
-    }
-}
+// function Delete(clicked){
+//     let ans=confirm("you want to delete this task")
+//     if(ans==false){
+//         localStorage.removeItem(clicked);
+//         document.getElementById(clicked).value = ''
+//         document.getElementById(clicked).style.background = 'transparent';
+//         document.getElementById( clicked).style.borderRadius = 'transparent';
+//     }
+//     else{
+//     }
+// }
 function onSubmitForm(){
     let month = parseInt(document.getElementById("month").value);
     let year = parseInt(document.getElementById("year").value);
@@ -205,7 +207,17 @@ function task(clicked) {
     let MONTH = monthNames[month2.getMonth()];
     date_1 = clicked + "/" + MONTH + "/" + year;
 }
+let edit;
+function Edit(clicked){
+    document.getElementById("delete").style.backgroundColor="red";
+    document.getElementById("delete").style.display="block";
+    document.getElementById("delete").style.visibility='visible';
+        edit=document.getElementById(clicked).textContent;
+        document.getElementById(clicked).textContent="";
+        date_1=clicked
+}
 function Submit2() {
+    localStorage.removeItem(date_1)
     let user_number = document.getElementById(date_1)
     let Task_1 = document.getElementById('data').value;
     localStorage.setItem(date_1, Task_1)
@@ -217,5 +229,22 @@ function Submit2() {
     document.getElementById('data').value = ''
 }
 function cancel() {
+    document.getElementById("delete").style.display="none";
+    document.getElementById("delete").style.visibility='hidden';
+    document.getElementById(date_1).textContent=edit;
+    edit="";
     document.getElementById('data').value = ''
+}
+function Delete(){
+    let ans=confirm("you want to delete this task")
+    if(ans==true){
+        
+        localStorage.removeItem(date_1);
+        document.getElementById(date_1).value = ''
+        document.getElementById(date_1).style.background = 'transparent';
+        document.getElementById(date_1).style.borderRadius = 'transparent';
+    }
+    else{
+    }
+
 }
