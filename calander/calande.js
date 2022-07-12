@@ -151,8 +151,6 @@ let year = parseInt(document.getElementById("year").value);
         document.getElementById("month").value = month  -1;
         renderTable(month-1, year)
         console.log(num)
-        document.getElementById(`${curdate}`).style.background = '#4dbbff';
-        document.getElementById(`${curdate}`).style.borderRadius = '50%';
         for(let i=0;i< localStorage.length;i++){
             let Key=localStorage.key(i)
             let val=localStorage.getItem(Key)
@@ -188,8 +186,6 @@ function month_1() {
         document.getElementById("month").value = month + 1;
         renderTable(month +1, year)
         console.log(num)
-        document.getElementById(`${curdate}`).style.background = '#4dbbff';
-        document.getElementById(`${curdate}`).style.borderRadius = '50%';
         for(let i=0;i< localStorage.length;i++){
             let Key=localStorage.key(i)
             let val=localStorage.getItem(Key)
