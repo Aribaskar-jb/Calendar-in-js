@@ -213,15 +213,16 @@ function task(clicked) {
     const month2 = new Date(year, month - 1);
     let MONTH = monthNames[month2.getMonth()];
     date_1 = clicked + "/" + MONTH + "/" + year;
+    document.getElementById("delete").style.display="none";
+    document.getElementById("delete").style.visibility='hidden';
 }
 let edit;
 function Edit(clicked){
     document.getElementById("delete").style.backgroundColor="red";
     document.getElementById("delete").style.display="block";
     document.getElementById("delete").style.visibility='visible';
-        edit=document.getElementById(clicked).textContent;
-        document.getElementById(clicked).textContent="";
-        date_1=clicked
+    edit=document.getElementById(clicked).textContent;
+    date_1=clicked
 }
 function Submit2() {
     localStorage.removeItem(date_1)
@@ -243,13 +244,15 @@ function cancel() {
     document.getElementById('data').value = ''
 }
 function Delete(){
-    let ans=confirm("you want to delete this task")
+    ans=confirm("Do You want to delete the task")
     if(ans==true){
-        
         localStorage.removeItem(date_1);
-        document.getElementById(date_1).value = ''
+        document.getElementById(date_1).value = ' '
         document.getElementById(date_1).style.background = 'transparent';
         document.getElementById(date_1).style.borderRadius = 'transparent';
+        edit="";
+        document.getElementById("delete").style.display="none";
+        document.getElementById("delete").style.visibility='hidden';
     }
     else{
     }
